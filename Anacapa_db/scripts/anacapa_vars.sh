@@ -15,8 +15,8 @@
 # a or A adapters are 3' adapters and g or G adapters are 5' adapters
 # in this script they are anchored to the ends of the read and allow up to 30% mismatch including indels
 
-FP_PATH="${DB}/forward_primers.txt"
-RP_PATH="${DB}/reverse_primers.txt"
+FP_PATH="${DB}/CO1_forward_primer.txt"
+RP_PATH="${DB}/CO1_reverse_primer.txt"
 
 #cutadapt vars
 ERROR_QC1=".3"															## max percent errors allowed in between adapter or reverse complemented primer + adapter sequence and read sequence
