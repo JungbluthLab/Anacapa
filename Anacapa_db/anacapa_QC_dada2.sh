@@ -20,7 +20,7 @@ FETRIM=""
 RETRIM=""
 MINTIMES_ASV=""
 MIN_MERGE_LENGTH=""
-LOCALMODE="FALSE"
+LOCALMODE="TRUE"
 HPC_HEADER=""
 
 while getopts "h?:i:o:d:u:f:r:a:t:l?:g?:c:p:q:m:x:y:b:e:k:" opt; do
@@ -168,10 +168,10 @@ else
 fi
 
 ##load modules / software
-${MODULE_SOURCE} # use if you need to load modules from an HPC
-${FASTX_TOOLKIT} #load fastx_toolkit
-${ANACONDA_PYTHON} #load anaconda/python2-4.2
-${ATS} #load ATS, Hoffman2 specific module for managing submitted jobs.
+#${MODULE_SOURCE} # use if you need to load modules from an HPC
+#${FASTX_TOOLKIT} #load fastx_toolkit
+#${ANACONDA_PYTHON} #load anaconda/python2-4.2
+#${ATS} #load ATS, Hoffman2 specific module for managing submitted jobs.
 
 ###
 
