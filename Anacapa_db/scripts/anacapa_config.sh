@@ -17,7 +17,7 @@ MODULE_SOURCE="" 	#if none, leave empty <- for HPC
 ### if not loading modules, need a way to not run lines ~65 - 70 (module load bit...) and a way to run programs from load names not paths...
 
 #defines what program should launch the run scripts inside the submitted jobs. can change to e.g. singularity if running in a container
-RUNNER="bash"
+#RUNNER="bash"
 
 #load cutadapt
 CUTADAPT="/usr/local/anacapa/miniconda/bin/cutadapt" 		#version 1.16 path to cutadapt binary. See documentation for how to obtain this script
