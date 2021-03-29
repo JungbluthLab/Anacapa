@@ -41,10 +41,10 @@ mkdir -p ${OUT}/Run_info/dada2_out
 mkdir -p ${OUT}/${MB}/${MB}dada2_out
 echo ""
 echo "Running dada2 on ${TYP} reads"
-echo "${MIN_ASV}"
+echo "Min ASV is ${MIN_ASV}"
 
 ##load module
-${MODULE_SOURCE} # use if you need to load modules from an HPC
+#${MODULE_SOURCE} # use if you need to load modules from an HPC
 
 #### critical or the dependency 'RcppParallel' will not install
 ${R} &> ${OUT}/Run_info/dada2_out/dada2_out_${TYP}
