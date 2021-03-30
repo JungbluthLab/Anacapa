@@ -12,11 +12,18 @@ if (length(args) != 5) {
   stop("please make sure there are 5 arguments: the barcode name, the path to fastq files, the expected seq length of the barcode, and the type of reads being processed, minimum ASV abundance")
 }
 
-
+# barC = "12S"
+# barC = "CO1"
 barC = args[1]  #barcode target
+# odirpath = "/Anacapa/Anacapa_db/12S_test_data_output"
+# odirpath = "/Anacapa/Anacapa_db/CO1_custom_run_output"
 odirpath = args[2]  #path to the fastq files
+# barC_length = 333 # CO1
+# barC_length = 196 #12S
 barC_length = args[3] # expected seq length of the barcode.
+# paired_or_not = "paired"
 paired_or_not = args[4] # type of reads- should be "paired", "forward", or "reverse
+# min_asv_abundance = 0
 min_asv_abundance = as.numeric(args[5]) # minimum number of times an ASV needs to appear to be kept in output files
 
 # confirm that the user has specified paired_or_not properly

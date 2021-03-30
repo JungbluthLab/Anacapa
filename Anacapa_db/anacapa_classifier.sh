@@ -145,7 +145,7 @@ date
 # Make sure unassembled reads are still paired and submit dada2 jobs
 ###############################
 
-echo "Assign taxonomy!: 1) submit bowtie2 and blca for the dada2 output for each metabarcode"
+echo "Assign taxonomy: 1) submit bowtie2 and blca for the dada2 output for each metabarcode"
 for j in `ls ${OUT}/`
 do
  if [[ "${j}" != "Run_info" ]]; # ignore non-metabarcode folders...
