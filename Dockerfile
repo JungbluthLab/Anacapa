@@ -96,7 +96,7 @@ RUN chmod +x /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/cru
 # RUN wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz && \
 #   wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
 
-RUN echo "ABCDEFGHIJAAA Lana"
+RUN echo "Lana"
 
 RUN git clone https://github.com/JungbluthLab/Anacapa && \
   gunzip /Anacapa/Example_data/12S_example_anacapa_QC_dada2_and_BLCA_classifier/12S_test_data/first1000reads-LSC-A-1_S19_L001_R2_001.fastq.gz && \
