@@ -39,9 +39,7 @@ $DB/anacapa_QC_dada2.sh -i $DATA -o $OUT -d $DB -f $FORWARD -r $REVERSE -e $DB/m
 
 # Start: Part 2 - Classify using Bowtie2
 
-cp -r /anacapa/Anacapa_db/CO1 /Anacapa/Anacapa_db
-
-chmod +x /Anacapa/Anacapa_db/muscle
+cp -r /Anacapa/Example_data/CO1_custom_run/CO1 /Anacapa/Anacapa_db
 
 cd /Anacapa/Anacapa_db
 

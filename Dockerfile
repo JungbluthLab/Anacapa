@@ -77,7 +77,9 @@ RUN ln -s /bin/tar /bin/gtar && \
 RUN git clone https://github.com/limey-bean/CRUX_Creating-Reference-libraries-Using-eXisting-tools
 
 RUN wget https://zenodo.org/record/2602180/files/anacapa.tar.gz?download=1 && \
-  tar -xvzf anacapa.tar.gz\?download\=1
+  tar -xvzf anacapa.tar.gz\?download\=1 && \
+  mv /anacapa/Anacapa_db/CO1 /Anacapa/Example_data/CO1_custom_run && \
+  rm anacapa.tar.gz\?download\=1
 
 RUN chmod +x /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/crux.sh && \
   cd /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/scripts && \
@@ -89,6 +91,9 @@ RUN chmod +x /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/cru
 # RUN wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz && \
 #   wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
 
-RUN echo "Lana test"
+RUN echo "Lana testA"
 
-RUN git clone https://github.com/JungbluthLab/Anacapa
+RUN git clone https://github.com/JungbluthLab/Anacapa && \
+  chmod +x /Anacapa/Anacapa_db/muscle
+
+WORKDIR "/Anacapa/Anacapa_db"
