@@ -117,10 +117,9 @@ if(paired_or_not == "paired") {
 
 # dada2 pipeline won't run if only 1 sample
 if (length(all_sample_names) < 2) {
-  stop("Make sure you have at least two samples, otherwise dada2_unified_script.R will error.")
+  print("Make sure you have at least two samples, otherwise dada2_unified_script.R will error.")
+  quit(save = "no", status=1)
 }
-
-print("test")}
 
 # Make plots of sequence quality ------
 #dir.create(path = paste0(path, "/plots"))

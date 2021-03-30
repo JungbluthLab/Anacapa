@@ -1,11 +1,9 @@
-
-
 #enter container
+docker run -v /Volumes/2TBEXT/anacapa_databases/Anacapa_taxon_ref_20171118:/mnt -it anacapa:latest /bin/bash
 
+# Start: Part 1 - QC and dada2
 
-#Part 1
-
-# 12S
+## Start: 12S
 cp -r /Anacapa/Example_data/12S_example_anacapa_QC_dada2_and_BLCA_classifier/12S_test_data /Anacapa/Anacapa_db
 
 DB="/Anacapa/Anacapa_db"
@@ -18,11 +16,10 @@ FORWARD="$DATA/forward.txt"
 REVERSE="$DATA/reverse.txt"
 
 $DB/anacapa_QC_dada2.sh -i $DATA -o $OUT -d $DB -f $FORWARD -r $REVERSE -e $DB/metabarcode_loci_min_merge_length.txt -a truseq -t MiSeq -l -g
+## End: 12S
 
 
-
-# CO1
-
+## Start: CO1
 cp -r /Anacapa/CO1_custom_run /Anacapa/Anacapa_db
 
 DB="/Anacapa/Anacapa_db"
@@ -36,10 +33,11 @@ REVERSE="$DATA/CO1_reverse_primer.txt"
 
 $DB/anacapa_QC_dada2.sh -i $DATA -o $OUT -d $DB -f $FORWARD -r $REVERSE -e $DB/metabarcode_loci_min_merge_length.txt -a truseq -t MiSeq -l -g
 
+## End: CO1
+# End: Part 1 - QC and dada2
 
 
-
-#Part 2
+# Start: Part 2 - Classify using Bowtie2
 
 cp -r /anacapa/Anacapa_db/CO1 /Anacapa/Anacapa_db
 

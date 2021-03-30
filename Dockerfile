@@ -76,12 +76,6 @@ RUN ln -s /bin/tar /bin/gtar && \
 
 RUN git clone https://github.com/limey-bean/CRUX_Creating-Reference-libraries-Using-eXisting-tools
 
-RUN wget https://zenodo.org/record/2602180/files/anacapa.tar.gz?download=1 && \
-  tar -xvzf anacapa.tar.gz\?download\=1
-
-RUN wget https://zenodo.org/record/2602180/files/crux_db.tar.gz?download=1 && \
-  tar -xvzf crux_db.tar.gz\?download\=1
-
 RUN chmod +x /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/crux.sh && \
   cd /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/scripts && \
   chmod +x *.sh && \
