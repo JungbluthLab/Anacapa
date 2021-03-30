@@ -62,10 +62,8 @@ RUN apt-get install --yes zlib1g-dev libgit2-dev
 
 RUN conda install -c conda-forge r=3.4.1
 
-# install singularity config files
+# copy local anacapa files
 COPY anacapa /usr/local/anacapa
-RUN cd /usr/local/anacapa/singularity-files && \
-  cp -r ./ /
 
 ENV PATH "/usr/local/anacapa/miniconda/lib/R/bin:${PATH}"
 
