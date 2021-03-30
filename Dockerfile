@@ -74,15 +74,6 @@ RUN Rscript --vanilla /usr/local/anacapa_installation_scripts/install-deps-bioco
 RUN ln -s /bin/tar /bin/gtar && \
   Rscript --vanilla /usr/local/anacapa_installation_scripts/install-deps-dada2.R
 
-RUN git clone https://github.com/limey-bean/CRUX_Creating-Reference-libraries-Using-eXisting-tools
-
-RUN chmod +x /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/crux.sh && \
-  cd /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/scripts && \
-  chmod +x *.sh && \
-  chmod +x *.py && \
-  sed -i 's|.usr.bin.python$|/usr/bin/env python|' entrez_qiime.py && \
-  sed -i 's|.user.bin.env. python$|/usr/bin/env python|' crux_format_primers_cutadapt.py
-
 RUN wget https://zenodo.org/record/2602180/files/anacapa.tar.gz?download=1
 
 RUN git clone https://github.com/JungbluthLab/Anacapa && \
@@ -94,5 +85,9 @@ RUN tar -xvzf anacapa.tar.gz\?download\=1 && \
 
 # RUN wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz && \
 #   wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
+
+RUN echo "123 Lana"
+
+RUN git clone https://github.com/JungbluthLab/CRUX_Creating-Reference-libraries-Using-eXisting-tools
 
 WORKDIR "/Anacapa/Anacapa_db"

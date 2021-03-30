@@ -1,5 +1,5 @@
 #enter container
-docker run -v /Volumes/2TBEXT/anacapa_databases/Anacapa_taxon_ref_20171118:/mnt -it anacapa:latest /bin/bash
+docker run -v /Volumes/2TBEXT/anacapa_databases:/mnt -it anacapa:latest /bin/bash
 
 # Start: Part 1 - QC and dada2
 
