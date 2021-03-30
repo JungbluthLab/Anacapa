@@ -62,17 +62,17 @@ RUN apt-get install --yes zlib1g-dev libgit2-dev
 
 RUN conda install -c conda-forge r=3.4.1
 
-# copy local anacapa files
-COPY anacapa /usr/local/anacapa
+# copy local installation_script files
+COPY anacapa_installation_scripts /usr/local/anacapa_installation_scripts
 
-ENV PATH "/usr/local/anacapa/miniconda/lib/R/bin:${PATH}"
+ENV PATH "/usr/local/anacapa_installation_scripts/miniconda/lib/R/bin:${PATH}"
 
-RUN Rscript --vanilla /usr/local/anacapa/install-deps.R
+RUN Rscript --vanilla /usr/local/anacapa_installation_scripts/install-deps.R
 
-RUN Rscript --vanilla /usr/local/anacapa/install-deps-bioconductor.R
+RUN Rscript --vanilla /usr/local/anacapa_installation_scripts/install-deps-bioconductor.R
 
 RUN ln -s /bin/tar /bin/gtar && \
-  Rscript --vanilla /usr/local/anacapa/install-deps-dada2.R
+  Rscript --vanilla /usr/local/anacapa_installation_scripts/install-deps-dada2.R
 
 RUN git clone https://github.com/limey-bean/CRUX_Creating-Reference-libraries-Using-eXisting-tools
 
@@ -81,10 +81,6 @@ RUN wget https://zenodo.org/record/2602180/files/anacapa.tar.gz?download=1 && \
 
 RUN wget https://zenodo.org/record/2602180/files/crux_db.tar.gz?download=1 && \
   tar -xvzf crux_db.tar.gz\?download\=1
-
-# install bundled software
-RUN mv /usr/local/anacapa/muscle3.8.31_i86linux64 /Anacapa/Anacapa_db/muscle && \
-  chmod +x /Anacapa/Anacapa_db/muscle
 
 RUN chmod +x /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/crux.sh && \
   cd /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/scripts && \
@@ -96,9 +92,4 @@ RUN chmod +x /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/cru
 # RUN wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz && \
 #   wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
 
-RUN echo "Lana"
-
-RUN git clone https://github.com/JungbluthLab/Anacapa && \
-  gunzip /Anacapa/Example_data/12S_example_anacapa_QC_dada2_and_BLCA_classifier/12S_test_data/first1000reads-LSC-A-1_S19_L001_R2_001.fastq.gz && \
-  gunzip /Anacapa/Example_data/12S_example_anacapa_QC_dada2_and_BLCA_classifier/12S_test_data/first1000reads-LSC-A-2_S20_L001_R1_001.fastq.gz && \
-  gunzip /Anacapa/Example_data/12S_example_anacapa_QC_dada2_and_BLCA_classifier/12S_test_data/first1000reads-LSC-A-2_S20_L001_R2_001.fastq.gz
+RUN git clone https://github.com/JungbluthLab/Anacapa
