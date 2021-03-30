@@ -115,6 +115,13 @@ if(paired_or_not == "paired") {
   fnFs <- file.path(path, fnFs)
 }
 
+# dada2 pipeline won't run if only 1 sample
+if (length(all_sample_names) < 2) {
+  stop("Make sure you have at least two samples, otherwise dada2_unified_script.R will error.")
+}
+
+print("test")}
+
 # Make plots of sequence quality ------
 #dir.create(path = paste0(path, "/plots"))
 
