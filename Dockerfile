@@ -15,6 +15,8 @@ RUN apt-get update && \
     libssl-dev \
     libcurl4-openssl-dev \
     libxml2-dev \
+    zlib1g-dev \
+    libgit2-dev \
     gfortran -y && \
   ln -s /bin/gzip /usr/bin/gzip && \
   wget -P /tmp/ "https://repo.continuum.io/miniconda/Miniconda2-4.7.10-Linux-x86_64.sh" && \
@@ -54,11 +56,7 @@ RUN conda install -c conda-forge libiconv
 
 RUN conda install -c anaconda pandas
 
-RUN conda install -c bioconda ecopcr
-
 RUN conda install -c bioconda fastx_toolkit
-
-RUN apt-get install --yes zlib1g-dev libgit2-dev
 
 RUN conda install -c conda-forge r=3.4.1
 
@@ -74,20 +72,24 @@ RUN Rscript --vanilla /usr/local/anacapa_installation_scripts/install-deps-bioco
 RUN ln -s /bin/tar /bin/gtar && \
   Rscript --vanilla /usr/local/anacapa_installation_scripts/install-deps-dada2.R
 
-RUN wget https://zenodo.org/record/2602180/files/anacapa.tar.gz?download=1
+RUN wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.11.0+-x64-linux.tar.gz && \
+  tar -xvzf ncbi-blast-2.11.0+-x64-linux.tar.gz && \
+  rm ncbi-blast-2.11.0+-x64-linux.tar.gz
+
+RUN git clone https://git.metabarcoding.org/obitools/ecopcr && \
+  cd /ecopcr/src && \
+  make
 
 RUN git clone https://github.com/JungbluthLab/Anacapa && \
   chmod +x /Anacapa/Anacapa_db/muscle
 
-RUN tar -xvzf anacapa.tar.gz\?download\=1 && \
+RUN wget https://zenodo.org/record/2602180/files/anacapa.tar.gz?download=1 && \
+  tar -xvzf anacapa.tar.gz\?download\=1 && \
   mv /anacapa/Anacapa_db/CO1 /Anacapa/Example_data/CO1_custom_run && \
   rm anacapa.tar.gz\?download\=1
 
-# RUN wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz && \
-#   wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
-
-RUN echo "123 Lana"
-
 RUN git clone https://github.com/JungbluthLab/CRUX_Creating-Reference-libraries-Using-eXisting-tools
 
-WORKDIR "/Anacapa/Anacapa_db"
+# WORKDIR "/Anacapa/Anacapa_db"
+
+WORKDIR "/CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db"

@@ -45,3 +45,35 @@ cd /Anacapa/Anacapa_db
 
 $DB/anacapa_classifier.sh -o $OUT -d $DB -l
 # End: Part 2 - Classify using Bowtie2
+
+
+
+# Start CRUX testing
+
+# Run download.sh to download required databases
+
+obiconvert -t /mnt/crux_db/TAXO --embl --ecopcrdb-output=/mnt/crux_db/Obitools_databases/OB_dat_EMBL_$(date +"%b_%d_%y") /mnt/crux_db/Obitools_databases/EMBL_fun/* --skip-on-error
+
+/CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/crux.sh \
+  -n CO1 \
+  -f GGWACWGGWTGAACWGTWTAYCCYCC \
+  -r TAAACYTCWGGRTGWCCRAARAAYCA \
+  -s 80 \
+  -m 400 \
+  -o /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/CO1_crux_output \
+  -d /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db \
+  -l \
+  -x 70 \
+  -j 1 \
+  -t 1
+
+# End CRUX testing
+
+# Start: Part 3 - Classify using Bowtie2 custom database
+
+cp -r /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/CO1_crux_output/CO1_db_filtered /Anacapa/Anacapa_db/CO1
+
+cd /Anacapa/Anacapa_db
+
+$DB/anacapa_classifier.sh -o $OUT -d $DB -l
+# End: Part 3 - Classify using Bowtie2 custom database
