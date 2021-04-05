@@ -15,8 +15,6 @@ RUN apt-get update && \
     libssl-dev \
     libcurl4-openssl-dev \
     libxml2-dev \
-    zlib1g-dev \
-    libgit2-dev \
     gfortran -y && \
   ln -s /bin/gzip /usr/bin/gzip && \
   wget -P /tmp/ "https://repo.continuum.io/miniconda/Miniconda2-4.7.10-Linux-x86_64.sh" && \
@@ -57,6 +55,8 @@ RUN conda install -c conda-forge libiconv
 RUN conda install -c anaconda pandas
 
 RUN conda install -c bioconda fastx_toolkit
+
+RUN apt-get install --yes zlib1g-dev libgit2-dev
 
 RUN conda install -c conda-forge r=3.4.1
 

@@ -52,7 +52,15 @@ $DB/anacapa_classifier.sh -o $OUT -d $DB -l
 
 # Run download.sh to download required databases
 
-obiconvert -t /mnt/crux_db/TAXO --embl --ecopcrdb-output=/mnt/crux_db/Obitools_databases/OB_dat_EMBL_$(date +"%b_%d_%y") /mnt/crux_db/Obitools_databases/EMBL_fun/* --skip-on-error
+input_list command
+
+
+input_list="fun inv pln pro vrt"
+
+for line in $(echo $input_list | tr " " "\n"); do 
+  obiconvert -t /mnt/crux_db/TAXO --embl --ecopcrdb-output=/mnt/crux_db/Obitools_databases/OB_dat_EMBL_${line}_Apr_02_21 /mnt/crux_db/Obitools_databases/EMBL_${line}/* --skip-on-error
+done
+
 
 /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/crux.sh \
   -n CO1 \
