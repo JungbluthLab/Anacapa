@@ -57,6 +57,7 @@ input_list command
 
 input_list="fun inv pln pro vrt"
 
+# for all five databases, takes a few days to run
 for line in $(echo $input_list | tr " " "\n"); do 
   obiconvert -t /mnt/crux_db/TAXO --embl --ecopcrdb-output=/mnt/crux_db/Obitools_databases/OB_dat_EMBL_${line}_Apr_02_21 /mnt/crux_db/Obitools_databases/EMBL_${line}/* --skip-on-error
 done
