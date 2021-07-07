@@ -52,16 +52,7 @@ $DB/anacapa_classifier.sh -o $OUT -d $DB -l
 
 # Run download.sh to download required databases
 
-input_list command
-
-
-input_list="fun inv pln pro vrt"
-
-# for all five databases, takes a few days to run
-for line in $(echo $input_list | tr " " "\n"); do 
-  obiconvert -t /mnt/crux_db/TAXO --embl --ecopcrdb-output=/mnt/crux_db/Obitools_databases/OB_dat_EMBL_${line}_Apr_02_21 /mnt/crux_db/Obitools_databases/EMBL_${line}/* --skip-on-error
-done
-
+obiconvert -t /mnt/crux_db/TAXO --embl --ecopcrdb-output=/mnt/crux_db/Obitools_databases/OB_dat_EMBL_$(date +"%b_%d_%y") /mnt/crux_db/Obitools_databases/EMBL_fun/* --skip-on-error
 
 /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/crux.sh \
   -n CO1 \
@@ -69,12 +60,12 @@ done
   -r TAAACYTCWGGRTGWCCRAARAAYCA \
   -s 80 \
   -m 400 \
-  -o /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db/CO1_crux_output \
+  -o /mnt/CO1_crux_output_full_run \
   -d /CRUX_Creating-Reference-libraries-Using-eXisting-tools/crux_db \
   -l \
   -x 70 \
-  -j 1 \
-  -t 1
+  -j 30 \
+  -t 30
 
 # End CRUX testing
 

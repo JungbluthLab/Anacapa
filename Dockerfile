@@ -76,9 +76,11 @@ RUN wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast
   tar -xvzf ncbi-blast-2.11.0+-x64-linux.tar.gz && \
   rm ncbi-blast-2.11.0+-x64-linux.tar.gz
 
-RUN git clone https://git.metabarcoding.org/obitools/ecopcr && \
-  cd /ecopcr/src && \
-  make
+RUN conda install ecopcr
+
+#RUN git clone https://git.metabarcoding.org/obitools/ecopcr && \
+#  cd /ecopcr/src && \
+#  make
 
 RUN git clone https://github.com/JungbluthLab/Anacapa && \
   chmod +x /Anacapa/Anacapa_db/muscle
@@ -87,6 +89,8 @@ RUN wget https://zenodo.org/record/2602180/files/anacapa.tar.gz?download=1 && \
   tar -xvzf anacapa.tar.gz\?download\=1 && \
   mv /anacapa/Anacapa_db/CO1 /Anacapa/Example_data/CO1_custom_run && \
   rm anacapa.tar.gz\?download\=1
+
+RUN echo "AAAAB"
 
 RUN git clone https://github.com/JungbluthLab/CRUX_Creating-Reference-libraries-Using-eXisting-tools
 
