@@ -19,8 +19,13 @@ $DB/anacapa_QC_dada2.sh -i $DATA -o $OUT -d $DB -f $FORWARD -r $REVERSE -e $DB/m
 ## End: 12S
 
 
+
 ## Start: CO1
 cp -r /Anacapa/Example_data/CO1_custom_run /Anacapa/Anacapa_db
+
+# update fasta files
+cd /Anacapa/Anacapa_db/CO1_custom_run && rm *.fastq
+cp /mnt/control_sequence_files/*.fastq /Anacapa/Anacapa_db/CO1_custom_run 
 
 DB="/Anacapa/Anacapa_db"
 
@@ -32,6 +37,7 @@ FORWARD="$DATA/CO1_forward_primer.txt"
 REVERSE="$DATA/CO1_reverse_primer.txt"
 
 $DB/anacapa_QC_dada2.sh -i $DATA -o $OUT -d $DB -f $FORWARD -r $REVERSE -e $DB/metabarcode_loci_min_merge_length.txt -a truseq -t MiSeq -l -g
+
 
 ## End: CO1
 # End: Part 1 - QC and dada2
@@ -46,6 +52,8 @@ cd /Anacapa/Anacapa_db
 $DB/anacapa_classifier.sh -o $OUT -d $DB -l
 # End: Part 2 - Classify using Bowtie2
 
+#copy output
+cp -r /Anacapa/Anacapa_db/CO1_custom_run_output /mnt/CO1_crux_output_full_run
 
 
 # Start CRUX testing
