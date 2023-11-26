@@ -62,12 +62,12 @@ if (any(!.inst)) {
 }
 
 # 2. Download packages from biocLite
-.bioc_packages <- c("phyloseq", "genefilter", "impute", "Biostrings")
-.inst <- .bioc_packages %in% installed.packages()
-if (any(!.inst)) {
-  source("http://bioconductor.org/biocLite.R")
-  biocLite(.bioc_packages[!.inst])
-}
+#.bioc_packages <- c("phyloseq", "genefilter", "impute", "Biostrings")
+#.inst <- .bioc_packages %in% installed.packages()
+#if (any(!.inst)) {
+#  source("http://bioconductor.org/biocLite.R")
+#  biocLite(.bioc_packages[!.inst])
+#}
 
 #.dada_version = "1.6.0"
 #.dada_version_gh = "v1.6"
